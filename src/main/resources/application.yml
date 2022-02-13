@@ -1,17 +1,17 @@
 twitter:
   consumer:
-    key: ebYyUNb1gN7YheKaFHw551RlT
-    secret: EXZgyeFUwhOLuJrHDtWDBQAlySe8yeaIIioLfoj9j0AFJFHEUq
+    key: lRl3PmfKX8S6AxvAnidRPYNVA
+    secret: whhZKj6ujcTfCMXOVsx6hhc1jahqPqJeYSWvhxmfG7DOJ1n30H
   access:
-    token: 1470512602216382466-WPrAqJ8ILG0mrT85U4opTwJhRD5WLw
-    secret: RLvVbmE1jIEgGnqYlzZznekjMZpfsQ2IBiu7EtdKbJih0
+    token: 1470512602216382466-Ex4aoi2nW1kjctCNejrEZRNuPL1TBy
+    secret: AE2NRZCr0AGuIKD3RUD0Oxs6DHUUSqjwLtlEXzXyzyoIJ
 
   consumer_post:
-    key: ebYyUNb1gN7YheKaFHw551RlT
-    secret: EXZgyeFUwhOLuJrHDtWDBQAlySe8yeaIIioLfoj9j0AFJFHEUq
+    key: lRl3PmfKX8S6AxvAnidRPYNVA
+    secret: whhZKj6ujcTfCMXOVsx6hhc1jahqPqJeYSWvhxmfG7DOJ1n30H
 
 
 niche:
   saas:
-    names :   agazdecki ,  chddaniel  ,  ChanningAllen  ,  mkhundmiri   ,  levelsio ,
+    names :    chddaniel  ,  ChanningAllen  ,  mkhundmiri   ,  levelsio ,
 

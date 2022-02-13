@@ -37,9 +37,6 @@ public class SchedulerTest {
   //  public void name() throws TwitterException {
 
         //System.out.println("HI");
-
-
-
     //}
 
 

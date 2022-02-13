@@ -42,9 +42,16 @@ public class UsersController {
         return userService.auth(id);
     }
 
+
+
     @PutMapping("/auth/{id}/{tok}/{sec}/{pin}")
     public User Oauth (@PathVariable String id, @PathVariable String tok,@PathVariable String sec,@PathVariable String pin ) throws ServletException, IOException, TwitterException {
         return userService.Oauth(id, tok, sec, pin);
+    }
+
+    @PutMapping("/analysis/{id}/{dur}")
+    public User analysis (@PathVariable String id, @PathVariable String dur) throws ServletException, IOException, TwitterException {
+        return userService.analysis(id, dur);
     }
 
     @PostMapping("/tweet/{id}/{tweet}")

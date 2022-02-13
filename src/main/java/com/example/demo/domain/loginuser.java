@@ -18,6 +18,11 @@ public class loginuser {
     private String user;
     private String status;
 
+    private String sub_status;
+    private String reg_date;
+    private String trial;
+    private String sub_type;
+
     private List<String> nicheSet;
 
     private List<String> userSet;

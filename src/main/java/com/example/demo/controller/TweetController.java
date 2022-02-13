@@ -19,6 +19,11 @@ public class TweetController {
 	@Autowired
 	private TweetService tweetService;
 
+	@GetMapping("/fetch")
+	public List<Tweet> fetchTweetsniche(@RequestParam(defaultValue = "Fitness") String niche) throws TwitterException {
+		return tweetService.fetchTweets(niche);
+	}
+
 
 
 	@GetMapping("/get_acc/{niche}")

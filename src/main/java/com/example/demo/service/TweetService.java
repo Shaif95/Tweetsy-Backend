@@ -67,10 +67,10 @@ public class TweetService {
 			System.out.println(accounts[i]);
 
 			Twitter twitter = twitterConfig.getTwitterInstance();
-	Query query = new Query("from:" + accounts[i]+ " +exclude:retweets"+ " +exclude:replies").since("2012-01-13");
+	Query query = new Query("from:" + accounts[i]+ " +exclude:retweets"+ " +exclude:replies").since("2010-01-13");
 
-			query.setUntil("2022-02-05");
-			query.setCount(2000);
+			query.setUntil("2012-02-05");
+			query.setCount(20000);
 			QueryResult result = twitter.search(query);
 
 			for (Status status : result.getTweets()) {
@@ -147,8 +147,10 @@ public class TweetService {
 
 			// The factory instance is re-useable and thread safe.
 			Twitter twitter = twitterConfig.getTwitterInstance();
-			Query query = new Query(types[i]).since("2020-01-01");
+			Query query = new Query(types[i]+ " +exclude:retweets"+ " +exclude:replies").since("2015-01-01");
 			query.setLang("en");
+			query.setUntil("2018-02-05");
+			query.setCount(500000);
 			QueryResult result = twitter.search(query);
 
 			for (Status status : result.getTweets()) {
@@ -159,15 +161,15 @@ public class TweetService {
 							.url_id(status.getId())
 							.user(status.getUser().getScreenName())
 							.userImage(status.getUser().getProfileImageURL())
-							.niche(niche)
+							.niche("Pop_Test1")
 							.RtCount(status.getRetweetCount())
 							.Fav_Count(status.getFavoriteCount())
 							.build();
 
-					if (tweet.getRtCount() > 500) {
+					if (tweet.getRtCount() > 2000) {
 						tweets.add(tweet);
 					}
-					if (tweet.getFav_Count() > 2000) {
+					else if (tweet.getFav_Count() > 2000) {
 						tweets.add(tweet);
 					}
 

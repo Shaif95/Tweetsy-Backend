@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 import com.example.demo.config.TwitterConfig;
 import com.example.demo.domain.User;
@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import org.thymeleaf.util.DateUtils;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -192,6 +193,64 @@ public class usrService {
 
     public void delete(String id) {
         userRepository.deleteById(id);
+    }
+
+    public User analysis(String id, String dur) throws TwitterException {
+
+        User user = userRepository.findById(id).get();
+
+        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+        configurationBuilder.setDebugEnabled(true).setOAuthConsumerKey(consumerKey)
+                .setOAuthConsumerSecret(consumerSecret).setOAuthAccessToken(user.getToken())
+                .setOAuthAccessTokenSecret(user.getToken_secret());
+
+        TwitterFactory twitterFactory = new TwitterFactory(configurationBuilder.build());
+
+        Twitter twitter = twitterFactory.getInstance();
+
+
+
+        if(dur.equals("month"))
+        {
+            user = getMonth(twitter,user);
+        }
+        else if(dur.equals("week"))
+        {
+            user = getWeek(twitter,user);
+        }
+
+
+        return userRepository.save(user);
+
+    }
+
+    private User getMonth(Twitter twitter, User user) {
+
+
+            return user;
+    }
+
+    private User getWeek(Twitter twitter, User user) throws TwitterException {
+
+        List<Status> statuses = twitter.getHomeTimeline();
+
+        Instant now = Instant.now();
+        Instant yesterday = now.minus(7, ChronoUnit.DAYS);
+        //System.out.println(now);
+        Date checkDate = Date.from(yesterday);
+        System.out.println(checkDate);
+
+        System.out.println("Showing home timeline.");
+        for (Status status : statuses) {
+            Date createdAt = status.getCreatedAt();
+
+            System.out.println(createdAt);
+
+            System.out.println(status.getText());
+
+        }
+
+        return  user;
     }
 
 }
