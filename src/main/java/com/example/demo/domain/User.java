@@ -23,9 +23,9 @@ public class User {
     private String top_weekly;
     private String top_monthly;
 
-    private Long rt_weekly;
-    private Long rt_monthly;
+    private Integer rt_weekly;
+    private Integer rt_monthly;
 
-    private Long fav_weekly;
-    private Long fav_monthly;
+    private Integer fav_weekly;
+    private Integer fav_monthly;
 }

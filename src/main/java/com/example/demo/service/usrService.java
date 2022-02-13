@@ -16,10 +16,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import org.thymeleaf.util.DateUtils;
-import twitter4j.Status;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
+import twitter4j.*;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 import twitter4j.conf.ConfigurationBuilder;
@@ -224,31 +221,93 @@ public class usrService {
 
     }
 
-    private User getMonth(Twitter twitter, User user) {
+    private User getMonth(Twitter twitter, User user) throws TwitterException {
+
+        Integer rt_mon=0;
+
+        Integer fav_mon=0;
+
+        String name = twitter.getScreenName();
+
+        Instant now = Instant.now();
+        Instant yesterday = now.minus(30, ChronoUnit.DAYS);
+        //System.out.println(now);
+        //Date checkDate = Date.from(yesterday);
+
+        String checkDate = yesterday.toString().substring(0,10);
+
+        System.out.println(".............................................................");
+        System.out.println(checkDate);
 
 
-            return user;
+        Query query = new Query("from:" + name + "exclude:retweets"+ " +exclude:replies").since(checkDate);
+        QueryResult result = twitter.search(query);
+
+        Status st = null;
+        Integer count = 0;
+
+        System.out.println("Showing home profile.");
+        for (Status status : result.getTweets()) {
+
+            rt_mon = rt_mon + status.getRetweetCount();
+            fav_mon = fav_mon + status.getFavoriteCount();
+
+            if(status.getFavoriteCount()>count)
+            {
+                count = status.getFavoriteCount();
+            }
+            st = status;
+
+        }
+
+        user.setFav_monthly(fav_mon);
+        user.setRt_monthly(rt_mon);
+
+        return  user;
+
     }
 
     private User getWeek(Twitter twitter, User user) throws TwitterException {
 
-        List<Status> statuses = twitter.getHomeTimeline();
+        Integer rt_weekly=0;
+
+        Integer fav_weekly=0;
+
+        String name = twitter.getScreenName();
 
         Instant now = Instant.now();
         Instant yesterday = now.minus(7, ChronoUnit.DAYS);
         //System.out.println(now);
-        Date checkDate = Date.from(yesterday);
+        //Date checkDate = Date.from(yesterday);
+
+        String checkDate = yesterday.toString().substring(0,10);
+
+        System.out.println(".............................................................");
         System.out.println(checkDate);
 
-        System.out.println("Showing home timeline.");
-        for (Status status : statuses) {
-            Date createdAt = status.getCreatedAt();
 
-            System.out.println(createdAt);
+        Query query = new Query("from:" + name ).since(checkDate);
+        QueryResult result = twitter.search(query);
 
-            System.out.println(status.getText());
+        Status st = null;
+        Integer count = 0;
+
+        System.out.println("Showing home profile.");
+        for (Status status : result.getTweets()) {
+
+         rt_weekly = rt_weekly + status.getRetweetCount();
+         fav_weekly = fav_weekly + status.getFavoriteCount();
+
+         if(status.getFavoriteCount()>count)
+         {
+             count = status.getFavoriteCount();
+         }
+         st = status;
 
         }
+
+        user.setFav_weekly(fav_weekly);
+        user.setRt_weekly(rt_weekly);
 
         return  user;
     }
