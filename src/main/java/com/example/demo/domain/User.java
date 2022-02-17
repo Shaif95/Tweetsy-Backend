@@ -14,6 +14,7 @@ public class User {
     private String user;
     private String userid;//username
     private Long count;
+    private String Timezone;
 
     private String token;
     private String token_secret;
@@ -28,4 +29,5 @@ public class User {
 
     private Integer fav_weekly;
     private Integer fav_monthly;
+
 }
