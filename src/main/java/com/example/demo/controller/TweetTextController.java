@@ -34,6 +34,11 @@ public class TweetTextController {
         return tweetTextService.update(id, tweetText);
     }
 
+    @GetMapping("/pending")
+    public List<TweetText> getPending() {
+        return tweetTextService.findPending();
+    }
+
     @GetMapping("/{id}")
     public TweetText getTweet(@PathVariable String id) {
         return tweetTextService.findById(id);

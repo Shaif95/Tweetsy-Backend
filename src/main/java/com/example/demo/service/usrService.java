@@ -159,6 +159,28 @@ public class usrService {
 
     }
 
+    public String reply(String id, String tweetid, String replyms) throws IOException, ServletException, TwitterException {
+
+        User user = userRepository.findById(id).get();
+
+        RequestToken requestToken = null;
+
+        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+        configurationBuilder.setDebugEnabled(true).setOAuthConsumerKey(consumerKey)
+                .setOAuthConsumerSecret(consumerSecret).setOAuthAccessToken(user.getToken())
+                .setOAuthAccessTokenSecret(user.getToken_secret());
+
+        TwitterFactory twitterFactory = new TwitterFactory(configurationBuilder.build());
+
+        Twitter twitter = twitterFactory.getInstance();
+
+ Status status = twitter.showStatus(Long.parseLong(tweetid));
+ Status reply = twitter.updateStatus(new StatusUpdate(" @" + status.getUser().getScreenName() + " "+ replyms ).inReplyToStatusId(status.getId()));
+
+        return new String("Successfully updated the status to " + status.getText() );
+
+    }
+
 
     public User update(String id, User updatedUser) {
 

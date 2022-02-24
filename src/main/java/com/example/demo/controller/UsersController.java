@@ -59,6 +59,12 @@ public class UsersController {
         return userService.post(id,tweet);
     }
 
+    @PostMapping("/reply/{id}/{tweetid}/{replyms}")
+    public String post (@PathVariable String id, @PathVariable String tweetid, @PathVariable String replyms) throws ServletException, IOException, TwitterException {
+        return userService.reply(id, tweetid, replyms);
+    }
+
+
     @PutMapping("/status/{id}/{st}")
     public User updatestatus(@PathVariable String id, @PathVariable String st) {
         return userService.stat(id,st);

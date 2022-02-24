@@ -45,7 +45,7 @@ public class TweetController {
 	}
 
 	@GetMapping("/bypage")
-	public Map<String, Object> getTweets(@RequestParam(defaultValue = "Fitness") String niche, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
+	public Map<String, Object> getTweets(@RequestParam(defaultValue = "Fitness") String niche, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int size) {
 		return tweetService.findTweetsWithPaging(niche,page, size);
 
 	}

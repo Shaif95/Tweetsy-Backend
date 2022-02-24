@@ -67,32 +67,35 @@ public class TweetService {
 			System.out.println(accounts[i]);
 
 			Twitter twitter = twitterConfig.getTwitterInstance();
-	Query query = new Query("from:" + accounts[i]+ " +exclude:retweets"+ " +exclude:replies").since("2010-01-13");
+			Query query = new Query("from:" + accounts[i]+ " +exclude:retweets"+
+					" +exclude:replies" +" +exclude:links" );
 
-			query.setUntil("2012-02-05");
-			query.setCount(20000);
+			query.setCount(50000000);
+
+			query.setSince("2016-02-05");
+
 			QueryResult result = twitter.search(query);
 
 			for (Status status : result.getTweets()) {
 
 
-					Tweet tweet = Tweet.builder()
-							.text(status.getText())
-							.url_id(status.getId())
-							.user(status.getUser().getScreenName())
-							.userImage(status.getUser().getProfileImageURL())
-							.niche("saas_PA")
-							.RtCount(status.getRetweetCount())
-							.Fav_Count(status.getFavoriteCount())
-							.build();
+				Tweet tweet = Tweet.builder()
+						.text(status.getText())
+						.url_id(status.getId())
+						.user(status.getUser().getScreenName())
+						.userImage(status.getUser().getProfileImageURL())
+						.niche("fitness1")
+						.RtCount(status.getRetweetCount())
+						.Fav_Count(status.getFavoriteCount())
+						.build();
 
-					//System.out.println(status.getText());
+				//System.out.println(status.getText());
 
 
-				if (tweet.getRtCount() > 20) {
+				if (tweet.getRtCount() > 20000) {
 					tweets.add(tweet);
 				}
-				if (tweet.getFav_Count() > 20) {
+				if (tweet.getFav_Count() > 200000) {
 					tweets.add(tweet);
 				}
 
@@ -147,31 +150,41 @@ public class TweetService {
 
 			// The factory instance is re-useable and thread safe.
 			Twitter twitter = twitterConfig.getTwitterInstance();
-			Query query = new Query(types[i]+ " +exclude:retweets"+ " +exclude:replies").since("2015-01-01");
+			Query query = new Query(types[i]+ " +exclude:retweets"+
+					" +exclude:replies" +" +exclude:links" );
+
 			query.setLang("en");
-			query.setUntil("2018-02-05");
-			query.setCount(500000);
+
+			query.setCount(50000000);
+
+			query.setSince("2010-02-05");
+
 			QueryResult result = twitter.search(query);
+
 
 			for (Status status : result.getTweets()) {
 
+				if(true) {
 
 					Tweet tweet = Tweet.builder()
 							.text(status.getText())
 							.url_id(status.getId())
 							.user(status.getUser().getScreenName())
 							.userImage(status.getUser().getProfileImageURL())
-							.niche("Pop_Test1")
+							.niche("us_politics2")
 							.RtCount(status.getRetweetCount())
 							.Fav_Count(status.getFavoriteCount())
 							.build();
 
-					if (tweet.getRtCount() > 2000) {
+
+					if (tweet.getRtCount() > 10) {
 						tweets.add(tweet);
 					}
-					else if (tweet.getFav_Count() > 2000) {
+					if (tweet.getFav_Count() > 10) {
 						tweets.add(tweet);
 					}
+
+				}
 
 
 			}
@@ -215,19 +228,19 @@ public class TweetService {
 
 				Integer end = te.indexOf(":");
 
-					Tweet tweet = Tweet.builder()
-							.text(te.substring(end,te.length()))
-							.url_id(status.getId())
-							.user(te.substring(st+1,end))
-							.userImage(status.getUser().getProfileImageURL())
-							.niche("Sabirtweets8")
-							.RtCount(status.getRetweetCount())
-							.Fav_Count(status.getFavoriteCount())
-							.build();
+				Tweet tweet = Tweet.builder()
+						.text(te.substring(end,te.length()))
+						.url_id(status.getId())
+						.user(te.substring(st+1,end))
+						.userImage(status.getUser().getProfileImageURL())
+						.niche("Sabirtweets8")
+						.RtCount(status.getRetweetCount())
+						.Fav_Count(status.getFavoriteCount())
+						.build();
 
-					//System.out.println(status.getText());
+				//System.out.println(status.getText());
 
-					tweets.add(tweet);
+				tweets.add(tweet);
 
 
 

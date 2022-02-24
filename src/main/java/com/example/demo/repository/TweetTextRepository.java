@@ -14,4 +14,6 @@ public interface TweetTextRepository extends MongoRepository<TweetText, String> 
 
     List<TweetText> findByUser(String user);
 
+    List<TweetText> findBydatetime (String datetime,TweetStatus status);
+
 }

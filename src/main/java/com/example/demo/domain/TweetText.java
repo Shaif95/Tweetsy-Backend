@@ -24,5 +24,6 @@ public class TweetText {
     private  Long duration;
     private String date;
     private String time;
+    private String datetime;
 
 }

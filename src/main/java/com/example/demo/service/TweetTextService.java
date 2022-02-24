@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -41,16 +42,16 @@ public class TweetTextService {
 
         tweetText.setStatus(status);
 
+        String all = tweetText.getDate().substring(0,6);
+
+        String dt = all + tweetText.getDate().substring(8,10);
+        String tm = tweetText.getTime();
+
+        String date = dt + "T" + tm ;
+
+        tweetText.setDatetime(date);
+
         tweetTextRepository.save(tweetText);
-
-        Thread.sleep(tweetText.getDuration());
-
-        userService.post(tweetText.getUserid(),tweetText.getText());
-
-        tweetText.setStatus(TweetStatus.SENT);
-
-        TweetText t = update(tweetText.getId(),tweetText);
-
 
         return new String("done");
 
@@ -76,6 +77,10 @@ public class TweetTextService {
 
     public TweetText findById(String id) {
         return tweetTextRepository.findById(id).get();
+    }
+
+    public List<TweetText> findPending() {
+        return  tweetTextRepository.findByStatus(TweetStatus.PENDING);
     }
 
     public void delete(String id) {
