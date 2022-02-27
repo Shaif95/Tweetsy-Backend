@@ -25,7 +25,7 @@ public class Tweet {
 	
 	private String user;
 
-	private Long url_id;
+	private String url_id;
 	
 	private String niche;
 

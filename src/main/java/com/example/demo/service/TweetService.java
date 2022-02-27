@@ -81,7 +81,7 @@ public class TweetService {
 
 				Tweet tweet = Tweet.builder()
 						.text(status.getText())
-						.url_id(status.getId())
+						.url_id(String.valueOf(status.getId()))
 						.user(status.getUser().getScreenName())
 						.userImage(status.getUser().getProfileImageURL())
 						.niche("fitness1")
@@ -168,7 +168,7 @@ public class TweetService {
 
 					Tweet tweet = Tweet.builder()
 							.text(status.getText())
-							.url_id(status.getId())
+							.url_id(String.valueOf(status.getId()))
 							.user(status.getUser().getScreenName())
 							.userImage(status.getUser().getProfileImageURL())
 							.niche("us_politics2")
@@ -230,7 +230,7 @@ public class TweetService {
 
 				Tweet tweet = Tweet.builder()
 						.text(te.substring(end,te.length()))
-						.url_id(status.getId())
+						.url_id(String.valueOf(status.getId()))
 						.user(te.substring(st+1,end))
 						.userImage(status.getUser().getProfileImageURL())
 						.niche("Sabirtweets8")
