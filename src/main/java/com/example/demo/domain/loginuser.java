@@ -20,6 +20,7 @@ public class loginuser {
 
     private String sub_status;
     private String reg_date;
+    private String end_date;
     private String trial;
     private String sub_type;
 

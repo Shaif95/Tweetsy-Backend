@@ -15,6 +15,7 @@ public class User {
     private String userid;//username
     private Long count;
     private String Timezone;
+    private String Timezone_status;
 
     private String token;
     private String token_secret;
