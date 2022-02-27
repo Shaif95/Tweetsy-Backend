@@ -1,14 +1,14 @@
 twitter:
   consumer:
-    key: lL8eC7cTpzbTxnzYEzrYJxOLs
-    secret: KKPVXzKO65abSSQ8fGbaXOUcss3ghAbJXmg63aO4noGeyqehZf
+    key: 4MwPkgHxvlH3djJlWeUpxqDj1
+    secret: qx6HMcZjce84eRKd9LcPlZASv1wlYLNprb3iQZhJTuCYcoXpHm
   access:
-    token: 1470512602216382466-YRaljMRIBBxQUVrHzAux94o7psAYuo
-    secret: JQSZNcyQtq2TRtrTqOSCBmq8CL7o40IFaS4RasezU7LBr
+    token: 1470512602216382466-a8ylY2tggHRf9sCUQHpxNOnuYh4bi3
+    secret: Lq6MrQKtMqDiPgMhK8HfxfzJJJAk5I9QvK8laAjmxFxfm
 
   consumer_post:
-    key: lL8eC7cTpzbTxnzYEzrYJxOLs
-    secret: KKPVXzKO65abSSQ8fGbaXOUcss3ghAbJXmg63aO4noGeyqehZf
+    key: 4MwPkgHxvlH3djJlWeUpxqDj1
+    secret: qx6HMcZjce84eRKd9LcPlZASv1wlYLNprb3iQZhJTuCYcoXpHm
 
 
 niche:

@@ -47,7 +47,9 @@ public class TweetTextService {
         String dt = all + tweetText.getDate().substring(8,10);
         String tm = tweetText.getTime();
 
-        String date = dt + "T" + tm ;
+
+
+        String date = dt.substring(6,8) + "-" + dt.substring(3,5) + "-"  + dt.substring(0,2) + "T" + tm ;
 
         tweetText.setDatetime(date);
 

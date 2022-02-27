@@ -10,11 +10,20 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import javax.annotation.PostConstruct;
+import java.util.TimeZone;
+
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 @EnableMongoRepositories
 @EnableMongoAuditing
 @EnableScheduling
 public class DemoApplication {
+
+	@PostConstruct
+	public void init(){
+		// Setting Spring Boot SetTimeZone
+		TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);

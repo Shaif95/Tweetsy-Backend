@@ -13,8 +13,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RestController;
 import twitter4j.TwitterException;
 
+import javax.servlet.ServletException;
+
 import static java.util.concurrent.TimeUnit.*;
 
+import java.io.IOException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
@@ -40,8 +43,8 @@ public class SchedulerTest {
     @Autowired
     private TweetTextRepository tweetTextRepository;
 
-   @Scheduled(cron ="0 */1 * * * ?")
-   public void name() throws TwitterException {
+   @Scheduled(cron ="0 */3 * * * ?")
+   public void schl() throws TwitterException, ServletException, IOException, InterruptedException {
 
         System.out.println("HI......................................");
 
@@ -49,12 +52,21 @@ public class SchedulerTest {
 
        //System.out.println(now);
        Instant min_1 = now.plus(1,ChronoUnit.MINUTES);
+       Instant min_2 = now.plus(2,ChronoUnit.MINUTES);
+       Instant min_3 = now.plus(3,ChronoUnit.MINUTES);
+       Instant min_4 = now.plus(4,ChronoUnit.MINUTES);
 
        String date = now.toString().substring(2,19);
        String date1 = min_1.toString().substring(2,19);
+       String date2 = min_2.toString().substring(2,19);
+       String date3 = min_3.toString().substring(2,19);
+       String date4 = min_4.toString().substring(2,19);
 
-       find(date);
-       find(date1);
+       find(date,0);
+       find(date1,1);
+       find(date2,2);
+       //find(date3,3);
+       //find(date4,4);
 
 
        System.out.println(date);
@@ -64,9 +76,24 @@ public class SchedulerTest {
 
     }
 
-    private void find(String date) {
+    private void find(String date, Integer k) throws ServletException, IOException, TwitterException, InterruptedException {
        List<TweetText> tweets = tweetTextRepository.findBydatetime(date,TweetStatus.PENDING);
+
        System.out.println(tweets);
+
+       for(int i =0; i<tweets.size();i++)
+       {
+           //Thread.sleep((k*1000*60));
+
+           TweetText t = tweets.get(i);
+
+           userService.post(t.getUserid(),t.getText());
+
+           t.setStatus(TweetStatus.SENT);
+
+           TweetText t1 = tweetTextService.update(tweets.get(i).getId(),t);
+       }
+
     }
 
 
