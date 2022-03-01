@@ -1,17 +1,22 @@
 twitter:
   consumer:
-    key: 4MwPkgHxvlH3djJlWeUpxqDj1
-    secret: qx6HMcZjce84eRKd9LcPlZASv1wlYLNprb3iQZhJTuCYcoXpHm
+    key: 7Ply7vKkntvCXWrPJbYcJ3GoV
+    secret: N1ZY9mFQ2KV37dZI6018cq4BopoXkOtvE9PKdzOBdH6FPpS4Ln
   access:
-    token: 1470512602216382466-a8ylY2tggHRf9sCUQHpxNOnuYh4bi3
-    secret: Lq6MrQKtMqDiPgMhK8HfxfzJJJAk5I9QvK8laAjmxFxfm
+    token: 1470512602216382466-XH959tAFzMts39wgmANilXX7H0zLbq
+    secret: zbemHM93Ycd9Xicz3myM44oRC8FyxU6p0WhLtm0p6xO91
 
   consumer_post:
-    key: 4MwPkgHxvlH3djJlWeUpxqDj1
-    secret: qx6HMcZjce84eRKd9LcPlZASv1wlYLNprb3iQZhJTuCYcoXpHm
+    key: 7Ply7vKkntvCXWrPJbYcJ3GoV
+    secret: N1ZY9mFQ2KV37dZI6018cq4BopoXkOtvE9PKdzOBdH6FPpS4Ln
 
 
 niche:
   saas:
-    names : POPSUGARFitness ,  lovesweatandfit , runnersworld , FitMenCook , roanwar
+    names :   sivers , jordanbpeterson
+
+
+
+
+
 

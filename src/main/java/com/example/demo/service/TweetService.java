@@ -95,7 +95,7 @@ public class TweetService {
 				if (tweet.getRtCount() > 20000) {
 					tweets.add(tweet);
 				}
-				if (tweet.getFav_Count() > 200000) {
+				else if (tweet.getFav_Count() > 200000) {
 					tweets.add(tweet);
 				}
 
@@ -177,10 +177,10 @@ public class TweetService {
 							.build();
 
 
-					if (tweet.getRtCount() > 10) {
+					if (tweet.getRtCount() > 10000000) {
 						tweets.add(tweet);
 					}
-					if (tweet.getFav_Count() > 10) {
+					else if (tweet.getFav_Count() > 100000) {
 						tweets.add(tweet);
 					}
 
