@@ -11,11 +11,10 @@ public class User {
 
     @Id
     private String id;
-    private String user;
-    private String userid;//username
+    private String user;   // email from login_user
+    private String userid;  //username
     private Long count;
-    private String Timezone;
-    private String Timezone_status;
+
 
     private String token;
     private String token_secret;

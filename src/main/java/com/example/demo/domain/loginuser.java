@@ -17,6 +17,8 @@ public class loginuser {
     private String password;
     private String user;
     private String status;
+    private String Timezone;
+    private String Timezone_status;
 
     private String sub_status;
     private String reg_date;

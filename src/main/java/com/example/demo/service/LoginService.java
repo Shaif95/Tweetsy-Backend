@@ -2,30 +2,17 @@ package com.example.demo.service;
 
 
 import com.example.demo.config.TwitterConfig;
-import com.example.demo.domain.User;
 import com.example.demo.domain.loginuser;
 import com.example.demo.repository.Login_Repository;
-import com.example.demo.repository.UserRepository;
 import com.example.demo.utils.CustomBeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-import twitter4j.auth.AccessToken;
-import twitter4j.auth.RequestToken;
-import twitter4j.conf.ConfigurationBuilder;
 
-import javax.servlet.ServletException;
-import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URI;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -57,7 +44,20 @@ public class LoginService {
         return usersMap;
     }
 
+    public List<loginuser> findByEmail(String id) {
+        return  login_repository.findByUser(id);
+    }
 
+
+    public loginuser updateByEmail(String id, loginuser updatedUser) {
+
+        loginuser user = login_repository.findByUser(id).get(0);
+
+        CustomBeanUtils.copyNonNullProperties(updatedUser, user);
+
+        return login_repository.save(user);
+
+    }
 
     public loginuser update(String id, loginuser updatedUser) {
 

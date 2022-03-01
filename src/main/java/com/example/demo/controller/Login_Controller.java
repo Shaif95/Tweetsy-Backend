@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -34,6 +35,15 @@ public class Login_Controller {
     }
 
 
+    @GetMapping("/email/{em}")
+    public List getbyemail(@PathVariable String em) {
+        return (List) loginService.findByEmail(em);
+    }
+
+    @PutMapping("/email/{em}")
+    public loginuser updatebyemail(@PathVariable String em, @RequestBody loginuser user) {
+        return  loginService.updateByEmail(em, user);
+    }
 
     @PutMapping("/{id}")
     public loginuser update(@PathVariable String id, @RequestBody loginuser user) {
