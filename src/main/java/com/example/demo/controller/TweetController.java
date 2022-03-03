@@ -63,10 +63,11 @@ public class TweetController {
 		return tweetService.getById(id);
 	}
 
-	@DeleteMapping
-	public String deleteAllTweets() {
-		tweetService.deleteAllTweets();
-		return "Deleted all tweets";
+
+	@PutMapping("/{id}")
+	public Tweet changeById(@PathVariable String id) {
+		return tweetService.changeById(id);
 	}
+
 
 }

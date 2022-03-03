@@ -193,13 +193,7 @@ public class TweetService {
 		return tweetRepository.saveAll(tweets);
 	}
 
-	public Tweet getById(String id) {
-		return tweetRepository.findById(id).get();
-	}
 
-	public void deleteAllTweets() {
-		tweetRepository.deleteAll();
-	}
 
 	public List<Tweet> fetchAccount(  ) throws TwitterException {
 
@@ -251,4 +245,19 @@ public class TweetService {
 		return tweetRepository.saveAll(tweets);
 
 	}
+
+
+	public Tweet changeById(String id) {
+
+		Tweet t = tweetRepository.findById(id).get();
+
+		t.setNiche("misc1");
+
+		return tweetRepository.save(t);
+	}
+
+	public Tweet getById(String id) {
+		return tweetRepository.findById(id).get();
+	}
+
 }
