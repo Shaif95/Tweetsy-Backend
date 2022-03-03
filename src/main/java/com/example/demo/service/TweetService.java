@@ -84,7 +84,7 @@ public class TweetService {
 						.url_id(String.valueOf(status.getId()))
 						.user(status.getUser().getScreenName())
 						.userImage(status.getUser().getProfileImageURL())
-						.niche("fitness1")
+						.niche("advice1")
 						.RtCount(status.getRetweetCount())
 						.Fav_Count(status.getFavoriteCount())
 						.build();
@@ -92,10 +92,10 @@ public class TweetService {
 				//System.out.println(status.getText());
 
 
-				if (tweet.getRtCount() > 20000) {
+				if (tweet.getRtCount() > 10000) {
 					tweets.add(tweet);
 				}
-				else if (tweet.getFav_Count() > 200000) {
+				else if (tweet.getFav_Count() > 10000) {
 					tweets.add(tweet);
 				}
 
