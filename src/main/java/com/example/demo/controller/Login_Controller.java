@@ -1,17 +1,10 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.domain.User;
 import com.example.demo.domain.loginuser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import twitter4j.TwitterException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -50,10 +43,24 @@ public class Login_Controller {
         return loginService.update(id,user);
     }
 
+    @PutMapping("/{id}/follow/{acs}")
+    public loginuser updateFollowSet(@PathVariable String id, @PathVariable String acs) {
+        return loginService.updateFollowSet(id,acs);
+    }
+
+
     @GetMapping("/{id}")
     public loginuser get(@PathVariable String id) {
         return loginService.findById(id);
     }
+
+
+    @GetMapping("/{id}/followset")
+    public String getFollowSet(@PathVariable String id) {
+        return String.valueOf(loginService.findById(id).getFollowSet());
+    }
+
+
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable String id) {

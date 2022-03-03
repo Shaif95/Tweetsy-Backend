@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Data
 @Document(collection = "login_user")
+
 public class loginuser {
 
     @Id
@@ -19,6 +20,10 @@ public class loginuser {
     private String status;
     private String Timezone;
     private String Timezone_status;
+
+    private List<String> followSet;
+
+    private List<String> GrowthHub;
 
     private String sub_status;
     private String reg_date;

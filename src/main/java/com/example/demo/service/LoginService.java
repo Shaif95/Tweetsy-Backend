@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +65,18 @@ public class LoginService {
         loginuser user = login_repository.findById(id).get();
 
         CustomBeanUtils.copyNonNullProperties(updatedUser, user);
+
+        return login_repository.save(user);
+
+    }
+
+    public loginuser updateFollowSet(String id, String acs) {
+
+        loginuser user = login_repository.findById(id).get();
+
+        String [] fset = acs.split(",");
+
+        user.setFollowSet(Arrays.asList(fset));
 
         return login_repository.save(user);
 
