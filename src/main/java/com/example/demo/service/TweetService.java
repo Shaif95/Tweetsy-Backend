@@ -265,6 +265,15 @@ public class TweetService {
 		return tweetRepository.save(t);
 	}
 
+	public Tweet changeCatById(String id, String c) {
+
+		Tweet t = tweetRepository.findById(id).get();
+
+		t.setNiche(c);
+
+		return tweetRepository.save(t);
+	}
+
 	public Tweet getById(String id) {
 		return tweetRepository.findById(id).get();
 	}

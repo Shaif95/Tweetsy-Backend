@@ -74,5 +74,10 @@ public class TweetController {
 		return tweetService.changeToSkipById(id);
 	}
 
+	@PutMapping("/{id}/{cat}")
+	public Tweet changeCatById(@PathVariable String id, @PathVariable String cat) {
+		return tweetService.changeCatById(id,cat);
+	}
+
 
 }
