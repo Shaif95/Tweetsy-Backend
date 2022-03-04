@@ -256,6 +256,15 @@ public class TweetService {
 		return tweetRepository.save(t);
 	}
 
+	public Tweet changeToSkipById(String id) {
+
+		Tweet t = tweetRepository.findById(id).get();
+
+		t.setNiche("del1");
+
+		return tweetRepository.save(t);
+	}
+
 	public Tweet getById(String id) {
 		return tweetRepository.findById(id).get();
 	}
