@@ -15,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import org.thymeleaf.util.DateUtils;
 import twitter4j.*;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
@@ -334,4 +333,17 @@ public class usrService {
         return  user;
     }
 
+    public String reset() {
+
+        List<User> users = userRepository.findAll();
+
+                for(int i =0; i<users.size();i++)
+                {
+                    User u = users.get(i);
+                    u.setStatus("false");
+                    userRepository.save(u);
+                }
+
+                return "Done";
+    }
 }

@@ -82,6 +82,11 @@ public class UsersController {
         return userService.findById(id);
     }
 
+    @PutMapping("/reset")
+    public String get() {
+        return userService.reset();
+    }
+
     @GetMapping("/email/{em}")
     public List getbyemail(@PathVariable String em) {
         return (List) userService.findByEmail(em);

@@ -4,6 +4,7 @@ package com.example.demo.controller;
 import com.example.demo.domain.loginuser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import twitter4j.TwitterException;
 
 import java.util.List;
 import java.util.Map;
@@ -44,8 +45,13 @@ public class Login_Controller {
     }
 
     @PutMapping("/{id}/follow/{acs}")
-    public loginuser updateFollowSet(@PathVariable String id, @PathVariable String acs) {
+    public loginuser updateFollowSet(@PathVariable String id, @PathVariable String acs) throws TwitterException {
         return loginService.updateFollowSet(id,acs);
+    }
+
+    @PutMapping("/reset")
+    public String get() {
+        return loginService.reset();
     }
 
 
