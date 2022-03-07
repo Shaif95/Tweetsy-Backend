@@ -56,8 +56,8 @@ public class Login_Controller {
 
 
     @GetMapping("/{id}/followset")
-    public String getFollowSet(@PathVariable String id) {
-        return String.valueOf(loginService.findById(id).getFollowSet());
+    public List<String> getFollowSet(@PathVariable String id) {
+        return (loginService.findById(id).getFollowSet());
     }
 
 
