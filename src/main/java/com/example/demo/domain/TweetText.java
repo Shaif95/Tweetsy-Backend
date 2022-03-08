@@ -26,4 +26,7 @@ public class TweetText {
     private String time;
     private String datetime;
 
+    private String localdate;
+    private String localtime;
+
 }
