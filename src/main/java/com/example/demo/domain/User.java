@@ -21,6 +21,9 @@ public class User {
 
     private String status;
 
+    private String screen_api;
+    private String prof_image;
+
     private String top_weekly;
     private String top_monthly;
 
