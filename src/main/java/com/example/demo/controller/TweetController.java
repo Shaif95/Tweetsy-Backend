@@ -52,7 +52,7 @@ public class TweetController {
 
 
 	@GetMapping
-	public Map<String, Object> getTweetsbyStatus(@RequestParam(defaultValue = "Popular_Account") String niche, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "50") int size) {
+	public Map<String, Object> getTweetsbyStatus(@RequestParam(defaultValue = "Popular_Account") String niche, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "150") int size) {
 		return tweetService.findTweetsWithStatus(niche,page, size);
 
 	}
