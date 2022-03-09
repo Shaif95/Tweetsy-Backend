@@ -111,8 +111,10 @@ public class SchedulerTest {
 
     // Engagement
 
-    @Scheduled(cron ="0 0 */6 * * ?")
+    @Scheduled(cron ="0 0 */1 * * ?")
     public void name() throws TwitterException {
+
+        System.out.println("every hour");
 
        List<loginuser> Allusers = new ArrayList<>();
 
