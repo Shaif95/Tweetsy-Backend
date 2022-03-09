@@ -56,7 +56,7 @@ public class SchedulerTest {
 
     // Scheduler
 
-   @Scheduled(cron ="0 */3 * * * ?")
+    @Scheduled(cron ="0 */1 * * * ?")
    public void schl() throws TwitterException, ServletException, IOException, InterruptedException {
 
         System.out.println("HI......................................");
@@ -111,7 +111,7 @@ public class SchedulerTest {
 
     // Engagement
 
-    @Scheduled(cron =" 0 0 6 * * ?")
+    @Scheduled(cron ="0 0 */6 * * ?")
     public void name() throws TwitterException {
 
        List<loginuser> Allusers = new ArrayList<>();
