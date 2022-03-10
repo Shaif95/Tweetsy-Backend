@@ -76,10 +76,6 @@ public class SchedulerTest {
        String date4 = min_4.toString().substring(2,19);
 
        find(date,0);
-       find(date1,1);
-       find(date2,2);
-       //find(date3,3);
-       //find(date4,4);
 
 
        System.out.println(date);
@@ -90,6 +86,7 @@ public class SchedulerTest {
     }
 
     private void find(String date, Integer k) throws ServletException, IOException, TwitterException, InterruptedException {
+
        List<TweetText> tweets = tweetTextRepository.findBydatetime(date,TweetStatus.PENDING);
 
        System.out.println(tweets);
@@ -111,7 +108,7 @@ public class SchedulerTest {
 
     // Engagement
 
-    @Scheduled(cron ="0 0 */1 * * ?")
+    @Scheduled(cron ="0 0 */6 * * ?")
     public void name() throws TwitterException {
 
         System.out.println("every hour");
@@ -150,7 +147,7 @@ public class SchedulerTest {
             System.out.println(accounts[i]);
 
             Twitter twitter = twitterConfig.getTwitterInstance();
-            Query query = new Query("from:" + accounts[i]+ " +exclude:retweets"+ " +exclude:replies").since(date);
+            Query query = new Query("from:" + accounts[i]+  " +exclude:replies").since(date);
 
             QueryResult result = twitter.search(query);
 
@@ -198,7 +195,9 @@ public class SchedulerTest {
             System.out.println(accounts[i]);
 
             Twitter twitter = twitterConfig.getTwitterInstance();
-            Query query = new Query("from:" + accounts[i]+ " +exclude:retweets"+ " +exclude:replies").since(date);
+            Query query = new Query("from:" + accounts[i]+ " +exclude:replies").since(date);
+
+            query.setCount(200);
 
             QueryResult result = twitter.search(query);
 
