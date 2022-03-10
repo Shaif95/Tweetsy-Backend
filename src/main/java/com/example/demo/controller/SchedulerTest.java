@@ -147,7 +147,7 @@ public class SchedulerTest {
             System.out.println(accounts[i]);
 
             Twitter twitter = twitterConfig.getTwitterInstance();
-            Query query = new Query("from:" + accounts[i]+  " +exclude:replies").since(date);
+            Query query = new Query("from:" + accounts[i]+  " +exclude:replies"+ " +exclude:retweets").since(date);
 
             QueryResult result = twitter.search(query);
 
@@ -162,6 +162,7 @@ public class SchedulerTest {
                         .niche("engage")
                         .RtCount(status.getRetweetCount())
                         .Fav_Count(status.getFavoriteCount())
+                        .tweetedAt(status.getCreatedAt())
                         .build();
 
                 tweets.add(tweet);
@@ -195,7 +196,7 @@ public class SchedulerTest {
             System.out.println(accounts[i]);
 
             Twitter twitter = twitterConfig.getTwitterInstance();
-            Query query = new Query("from:" + accounts[i]+ " +exclude:replies").since(date);
+            Query query = new Query("from:" + accounts[i]+ " +exclude:replies"+ " +exclude:retweets").since(date);
 
 
             QueryResult result = twitter.search(query);
@@ -211,6 +212,7 @@ public class SchedulerTest {
                         .niche(id+"engage")
                         .RtCount(status.getRetweetCount())
                         .Fav_Count(status.getFavoriteCount())
+                        .tweetedAt(status.getCreatedAt())
                         .build();
 
                 tweets.add(tweet);
