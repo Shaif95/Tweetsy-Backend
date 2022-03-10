@@ -179,7 +179,7 @@ public class SchedulerTest {
     private void fetch(List<String> followSet, String id) throws TwitterException {
 
         Instant now = Instant.now();
-        Instant yesterday = now.minus(1, ChronoUnit.DAYS);
+        Instant yesterday = now.minus(2, ChronoUnit.DAYS);
         //System.out.println(now);
         String date = now.toString().substring(0,10);
 
@@ -197,7 +197,6 @@ public class SchedulerTest {
             Twitter twitter = twitterConfig.getTwitterInstance();
             Query query = new Query("from:" + accounts[i]+ " +exclude:replies").since(date);
 
-            query.setCount(200);
 
             QueryResult result = twitter.search(query);
 
