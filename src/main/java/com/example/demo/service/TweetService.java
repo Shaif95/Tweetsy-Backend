@@ -127,7 +127,7 @@ public class TweetService {
 
 	public Map<String, Object> findTweetsWithStatus(String niche, int page, int size) {
 
-		Page<Tweet> tweets = tweetRepository.findByNiche(niche,PageRequest.of(page, size), Sort.by("tweetedAt").descending());
+		Page<Tweet> tweets = tweetRepository.findByNiche(niche,PageRequest.of(page, size), Sort.by("tweetedAt").ascending());
 		Map<String, Object> tweetsMap = new HashMap<>();
 
 		tweetsMap.put("tweets", tweets.getContent());
