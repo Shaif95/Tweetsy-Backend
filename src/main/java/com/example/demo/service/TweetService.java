@@ -250,7 +250,7 @@ public class TweetService {
 							.url_id(String.valueOf(status.getId()))
 							.user(username)
 							.userImage(getImageByUser(username))
-							.niche("Popular1")
+							.niche("Volume1")
 							.RtCount(status.getRetweetCount())
 							.Fav_Count(status.getFavoriteCount())
 							.tweetedAt(status.getCreatedAt())
