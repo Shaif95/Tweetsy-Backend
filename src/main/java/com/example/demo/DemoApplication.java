@@ -26,10 +26,10 @@ public class DemoApplication {
 		TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
 	}
 
-	@GetMapping("/")
+	@GetMapping("/new")
 	public String Backend()
 	{
-		return "Welcome to Tweetsy Backend Spring";
+		return "Welcome to Tweetsy Backend Spring 1";
 	}
 
 	public static void main(String[] args) {

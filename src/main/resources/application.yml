@@ -1,21 +1,18 @@
 twitter:
   consumer:
-    key: U9SmSPhyUj36tPHVYWji7Fihx
-    secret: RqWGDwXbRb5WFbHFg0c2TXod9xWOTD3M7IgQRhJqJgQ9FSvQWL
+    key: WFqFu2pSbnOY7cs0iA82U8WGx
+    secret: QSi8W2lJfzRnR9KxLou8XQ4ZnPgo2Sn3xuHULvAE5FB5sPG12n
   access:
-    token: 1470512602216382466-SxYanhnkdQS3iG6Vh51M1neyqwCopa
-    secret: 43QkR3a5mSX8nZcAjqRciHvOB30touVEKUwAjWYvRkicA
-
+    token: 1470512602216382466-9HRj4v1SaiYXVFlxvTPZ1mh5aLZhQx
+    secret: BQNe0BRjXgf22ojUGckAQLLThnFPwQ8ZFii58RaKxARU9
 
   consumer_post:
-    key: U9SmSPhyUj36tPHVYWji7Fihx
-    secret: RqWGDwXbRb5WFbHFg0c2TXod9xWOTD3M7IgQRhJqJgQ9FSvQWL
-
+    key: WFqFu2pSbnOY7cs0iA82U8WGx
+    secret: QSi8W2lJfzRnR9KxLou8XQ4ZnPgo2Sn3xuHULvAE5FB5sPG12n
 
 niche:
   saas:
-    names : PerfectGuide_,limitlessmindon,LifeNotesLN,BrainiacLab,SeekMastery,Risk2Earn,ShreyaPattar
-
+    names : dennishegstad,jasonlk,andrewchen,ttunguz,firstround,mwseibel,NathanLatka,iamwillcannon,ImSamThompson,iuditg,upadhyay_harsh1,TheCoolestCool
 
 people:
   engage:
