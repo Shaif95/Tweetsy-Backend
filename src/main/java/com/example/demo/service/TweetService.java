@@ -83,6 +83,7 @@ public class TweetService {
 
 				Tweet tweet = Tweet.builder()
 						.text(status.getText())
+						.searchtext(status.getText())
 						.url_id(String.valueOf(status.getId()))
 						.user(status.getUser().getScreenName())
 						.userImage(status.getUser().getProfileImageURL())
@@ -171,6 +172,7 @@ public class TweetService {
 
 					Tweet tweet = Tweet.builder()
 							.text(status.getText())
+							.searchtext(status.getText())
 							.url_id(String.valueOf(status.getId()))
 							.user(status.getUser().getScreenName())
 							.userImage(status.getUser().getProfileImageURL())
@@ -210,25 +212,26 @@ public class TweetService {
 		List<Tweet> neededtweets = new ArrayList<Tweet>();
 
 		Paging pg = new Paging();
-		String userName = "Sabirtweets8";
+		//String userName = "Sabirtweets8";
 
-		//String userName = "324342432fsdfhui78ds";
+		String userName = "324342432fsdfhui78ds";
 
 		Twitter twitter = twitterConfig.getTwitterInstance();
 
-		int numberOfTweets = 100;
+		int numberOfTweets = 110;
 		long lastID = Long.MAX_VALUE;
 		ArrayList<Status> tweets = new ArrayList<Status>();
 		while (tweets.size () < numberOfTweets) {
 			try {
 				tweets.addAll(twitter.getUserTimeline(userName,pg));
 				System.out.println("Gathered " + tweets.size() + " tweets");
-
+				for (Status t: tweets)
+					if(t.getId() < lastID) lastID = t.getId();
 			}
 			catch (TwitterException te) {
 			System.out.println("Error");
 			};
-
+			pg.setMaxId(lastID-1);
 		}
 
 
@@ -247,10 +250,11 @@ public class TweetService {
 
 					Tweet tweet = Tweet.builder()
 							.text(te.substring(end, te.length()))
+							.searchtext(te.substring(end, te.length()))
 							.url_id(String.valueOf(status.getId()))
 							.user(username)
 							.userImage(getImageByUser(username))
-							.niche("Volume1")
+							.niche("handpicked")
 							.RtCount(status.getRetweetCount())
 							.Fav_Count(status.getFavoriteCount())
 							.tweetedAt(status.getCreatedAt())
