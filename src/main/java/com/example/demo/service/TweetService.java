@@ -176,7 +176,7 @@ public class TweetService {
 							.url_id(String.valueOf(status.getId()))
 							.user(status.getUser().getScreenName())
 							.userImage(status.getUser().getProfileImageURL())
-							.niche("coding3")
+							.niche(niche+10)
 							.RtCount(status.getRetweetCount())
 							.Fav_Count(status.getFavoriteCount())
 							.tweetedAt(status.getCreatedAt())
