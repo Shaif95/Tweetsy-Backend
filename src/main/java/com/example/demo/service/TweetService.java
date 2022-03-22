@@ -249,8 +249,8 @@ public class TweetService {
 					String username = te.substring(st + 1, end);
 
 					Tweet tweet = Tweet.builder()
-							.text(te.substring(end, te.length()))
-							.searchtext(te.substring(end, te.length()))
+							.text(te.substring(end+1, te.length()))
+							.searchtext(te.substring(end+1, te.length()))
 							.url_id(String.valueOf(status.getId()))
 							.user(username)
 							.userImage(getImageByUser(username))
