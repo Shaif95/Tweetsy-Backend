@@ -1,14 +1,14 @@
 twitter:
   consumer:
-    key: a6O8gWvSHOaFyzVE6BKYxmgZf
-    secret: 92zxSI35Y5hYeWju8QvQbpxky40eWv4FKJAfoYKhYlEN10OS7v
+    key: 8U7mSPWWbmCQMtPcxJSYh5NdC
+    secret: isG8VxmNuvBBLkAEmkoPzms4ZO7ujXHn6LJmsQJPnsHfo22JcL
   access:
-    token: 1470512602216382466-qp5l8I5PnN8AffWw91LTsZTsiXJMI2
-    secret: 8FQHuSyOInBkzZvREjxRFYbxbI5v3QFFm2VoIzKxLuRBc
+    token: 1470512602216382466-ZYllfBVgA4UucPN4lnoxB5seWBpJgn
+    secret: O1qYdwqOQD7ODEYkQMtJ9Nb1oNTU2909q91JIQ8NQvTyB
 
   consumer_post:
-    key: a6O8gWvSHOaFyzVE6BKYxmgZf
-    secret: 92zxSI35Y5hYeWju8QvQbpxky40eWv4FKJAfoYKhYlEN10OS7v
+    key: 8U7mSPWWbmCQMtPcxJSYh5NdC
+    secret: isG8VxmNuvBBLkAEmkoPzms4ZO7ujXHn6LJmsQJPnsHfo22JcL
 
 niche:
   saas:
