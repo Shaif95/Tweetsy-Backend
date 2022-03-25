@@ -212,9 +212,9 @@ public class TweetService {
 		List<Tweet> neededtweets = new ArrayList<Tweet>();
 
 		Paging pg = new Paging();
-		//String userName = "Sabirtweets8";
+		String userName = "Sabirtweets8";
 
-		String userName = "324342432fsdfhui78ds";
+		//String userName = "324342432fsdfhui78ds";
 
 		Twitter twitter = twitterConfig.getTwitterInstance();
 
@@ -254,7 +254,7 @@ public class TweetService {
 							.url_id(String.valueOf(status.getId()))
 							.user(username)
 							.userImage(getImageByUser(username))
-							.niche("handpicked")
+							.niche("Volume1")
 							.RtCount(status.getRetweetCount())
 							.Fav_Count(status.getFavoriteCount())
 							.tweetedAt(status.getCreatedAt())
@@ -265,6 +265,77 @@ public class TweetService {
 					neededtweets.add(tweet);
 
 				}
+		}
+
+		return tweetRepository.saveAll(neededtweets);
+
+	}
+
+
+	public List<Tweet> fetchAccountbyuser( String name ) throws TwitterException {
+
+
+		Instant now = Instant.now();
+		Instant yesterday = now.minus(100, ChronoUnit.DAYS);
+		//System.out.println(now);
+		String date = now.toString().substring(0,10);
+
+		List<Tweet> neededtweets = new ArrayList<Tweet>();
+
+		Paging pg = new Paging();
+
+		String userName = name;
+
+		//String userName = "324342432fsdfhui78ds";
+
+		Twitter twitter = twitterConfig.getTwitterInstance();
+
+		int numberOfTweets = 300;
+		long lastID = Long.MAX_VALUE;
+		ArrayList<Status> tweets = new ArrayList<Status>();
+		while (tweets.size () < numberOfTweets) {
+			try {
+				tweets.addAll(twitter.getUserTimeline(userName,pg));
+				System.out.println("Gathered " + tweets.size() + " tweets");
+				for (Status t: tweets)
+					if(t.getId() < lastID) lastID = t.getId();
+			}
+			catch (TwitterException te) {
+				System.out.println("Error");
+			};
+			pg.setMaxId(lastID-1);
+		}
+
+
+		//query.setCount(50);
+
+		for (Status status : tweets) {
+
+			if(status.getText().startsWith("RT") != true ) {
+
+
+				Tweet tweet = Tweet.builder()
+						.text(status.getText())
+						.searchtext(status.getText())
+						.url_id(String.valueOf(status.getId()))
+						.user(status.getUser().getScreenName())
+						.userImage(status.getUser().getProfileImageURL())
+						.niche("Volume11")
+						.RtCount(status.getRetweetCount())
+						.Fav_Count(status.getFavoriteCount())
+						.tweetedAt(status.getCreatedAt())
+						.build();
+
+				//System.out.println(status.getText());
+
+				if (tweet.getRtCount() > 30) {
+					neededtweets.add(tweet);
+				}
+				else if (tweet.getFav_Count() > 30) {
+					neededtweets.add(tweet);
+				}
+
+			}
 		}
 
 		return tweetRepository.saveAll(neededtweets);
