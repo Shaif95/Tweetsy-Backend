@@ -91,6 +91,7 @@ public class TweetService {
 						.RtCount(status.getRetweetCount())
 						.Fav_Count(status.getFavoriteCount())
 						.tweetedAt(status.getCreatedAt())
+						.media(Arrays.asList(status.getMediaEntities()))
 						.build();
 
 				//System.out.println(status.getText());
@@ -180,6 +181,7 @@ public class TweetService {
 							.RtCount(status.getRetweetCount())
 							.Fav_Count(status.getFavoriteCount())
 							.tweetedAt(status.getCreatedAt())
+							.media(Arrays.asList(status.getMediaEntities()))
 							.build();
 
 
@@ -239,7 +241,7 @@ public class TweetService {
 
 		for (Status status : tweets) {
 
-			if(status.getText().startsWith("RT") == true ) {
+			if(status.getText().startsWith("RT") == true && status.getText().startsWith("@") != true  ) {
 				String te = status.getText();
 
 				Integer st = te.indexOf("@");
@@ -258,6 +260,7 @@ public class TweetService {
 						.RtCount(status.getRetweetCount())
 						.Fav_Count(status.getFavoriteCount())
 						.tweetedAt(status.getCreatedAt())
+						.media(Arrays.asList(status.getMediaEntities()))
 						.build();
 
 				//System.out.println(status.getText());
@@ -311,7 +314,7 @@ public class TweetService {
 
 		for (Status status : tweets) {
 
-			if(status.getText().startsWith("RT") != true ) {
+			if(status.getText().startsWith("RT") != true && status.getText().startsWith("@") != true  ) {
 
 
 				Tweet tweet = Tweet.builder()
@@ -324,6 +327,7 @@ public class TweetService {
 						.RtCount(status.getRetweetCount())
 						.Fav_Count(status.getFavoriteCount())
 						.tweetedAt(status.getCreatedAt())
+						.media(Arrays.asList(status.getMediaEntities()))
 						.build();
 
 				//System.out.println(status.getText());
@@ -405,7 +409,7 @@ public class TweetService {
 		Twitter twitter = twitterConfig.getTwitterInstance();
 		Query query = new Query( "from:" + profname + " +exclude:retweets" );
 		QueryResult result = twitter.search(query);
-		query.setCount(1);
+		query.setCount(2);
 
 		for (Status status : result.getTweets()) {
 

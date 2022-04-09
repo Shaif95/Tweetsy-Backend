@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "https://tweetsy-frontend.herokuapp.com/")
 @RequestMapping("/users")
 public class UsersController {
 
@@ -61,8 +60,8 @@ public class UsersController {
     }
 
     @PostMapping("/tweet/{id}/{tweet}")
-    public String post (@PathVariable String id, @PathVariable String tweet) throws ServletException, IOException, TwitterException {
-        return userService.post(id,tweet);
+    public String post (@PathVariable String id, @PathVariable String tweet, @RequestBody List<String> image) throws ServletException, IOException, TwitterException {
+        return userService.post(id,tweet,image);
     }
 
     @PostMapping("/reply/{id}/{tweetid}")

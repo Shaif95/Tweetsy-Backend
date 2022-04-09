@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -94,22 +95,22 @@ public class usrService {
 
     }
 
-        public String auth(String id) throws IOException, ServletException, TwitterException {
+    public String auth(String id) throws IOException, ServletException, TwitterException {
 
         RequestToken requestToken = null;
 
         User u = stat(id,"false");
 
 
-            ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
-            configurationBuilder.setDebugEnabled(true).setOAuthConsumerKey(consumerKey)
-                    .setOAuthConsumerSecret(consumerSecret);
+        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+        configurationBuilder.setDebugEnabled(true).setOAuthConsumerKey(consumerKey)
+                .setOAuthConsumerSecret(consumerSecret);
 
-            TwitterFactory twitterFactory = new TwitterFactory(configurationBuilder.build());
+        TwitterFactory twitterFactory = new TwitterFactory(configurationBuilder.build());
 
-            Twitter twitter = twitterFactory.getInstance();
+        Twitter twitter = twitterFactory.getInstance();
 
-            String callBack = "oob";
+        String callBack = "oob";
 
         try
         {
@@ -138,7 +139,7 @@ public class usrService {
 
 
 
-    public String post(String id, String tweet) throws IOException, ServletException, TwitterException {
+    public String post(String id, String tweet, List<String> image ) throws IOException, ServletException, TwitterException {
 
         User user = userRepository.findById(id).get();
 
@@ -153,9 +154,21 @@ public class usrService {
 
         Twitter twitter = twitterFactory.getInstance();
 
-        Status status = twitter.updateStatus(tweet);
+        String statusMessage = tweet;
 
-        return new String("Successfully updated the status to " + status.getText() );
+        StatusUpdate status = new StatusUpdate(statusMessage);
+
+        if (image.size()!=0)
+        {
+            for(int j =0; j <image.size();j++)
+            {
+                status.setMedia(new File(image.get(j)));
+            }
+        }
+
+        twitter.updateStatus(status);
+
+        return new String("Successfully updated the status to " + status.getStatus());
 
     }
 
@@ -178,8 +191,8 @@ public class usrService {
 
         Twitter twitter = twitterFactory.getInstance();
 
- Status status = twitter.showStatus(Long.parseLong(tweetid));
- Status reply = twitter.updateStatus(new StatusUpdate(" @" + status.getUser().getScreenName() + " "+ rlp ).inReplyToStatusId(status.getId()));
+        Status status = twitter.showStatus(Long.parseLong(tweetid));
+        Status reply = twitter.updateStatus(new StatusUpdate(" @" + status.getUser().getScreenName() + " "+ rlp ).inReplyToStatusId(status.getId()));
 
         return new String("Successfully updated the status to " + status.getText() );
 
@@ -321,14 +334,14 @@ public class usrService {
         System.out.println("Showing home profile.");
         for (Status status : result.getTweets()) {
 
-         rt_weekly = rt_weekly + status.getRetweetCount();
-         fav_weekly = fav_weekly + status.getFavoriteCount();
+            rt_weekly = rt_weekly + status.getRetweetCount();
+            fav_weekly = fav_weekly + status.getFavoriteCount();
 
-         if(status.getFavoriteCount()>count)
-         {
-             count = status.getFavoriteCount();
-         }
-         st = status;
+            if(status.getFavoriteCount()>count)
+            {
+                count = status.getFavoriteCount();
+            }
+            st = status;
 
         }
 
@@ -342,13 +355,13 @@ public class usrService {
 
         List<User> users = userRepository.findAll();
 
-                for(int i =0; i<users.size();i++)
-                {
-                    User u = users.get(i);
-                    u.setStatus("false");
-                    userRepository.save(u);
-                }
+        for(int i =0; i<users.size();i++)
+        {
+            User u = users.get(i);
+            u.setStatus("false");
+            userRepository.save(u);
+        }
 
-                return "Done";
+        return "Done";
     }
 }
